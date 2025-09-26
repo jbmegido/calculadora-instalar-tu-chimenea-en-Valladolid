@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Gratuita: ¿Cuánto Cuesta tu Chimenea en Valladolid?</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        .calculator-bg { background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%); }
+        .loading { display: none; }
+        .loading.active { display: inline-block; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div class="calculator-bg text-white py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="text-5xl mb-4">🔥</div>
+            <h1 class="text-4xl font-bold mb-4">
+                Calculadora GRATUITA de Precios
+            </h1>
+            <p class="text-xl mb-6">
+                Descubre cuánto cuesta instalar tu chimenea en Valladolid
+            </p>
+            <p class="text-lg opacity-90">
+                ✅ Precios actualizados 2025 ✅ Empresas locales ✅ Sin compromiso
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <!-- Calculadora Interactiva -->
+        <div class="bg-white rounded-xl shadow-xl p-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Calcula tu Presupuesto en 3 Pasos</h2>
+            
+            <div id="step1" class="calculator-step">
+                <h3 class="text-xl font-semibold mb-4">1. ¿Qué tipo de chimenea quieres?</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <button onclick="selectOption('tipo', 'pellets', 1500)" 
+                            class="option-btn p-6 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="text-3xl mb-2">🌱</div>
+                        <div class="font-semibold">Estufa de Pellets</div>
+                        <div class="text-sm text-gray-600">Desde 1.500€</div>
+                    </button>
+                    <button onclick="selectOption('tipo', 'leña', 800)" 
+                            class="option-btn p-6 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="text-3xl mb-2">🪵</div>
+                        <div class="font-semibold">Chimenea de Leña</div>
+                        <div class="text-sm text-gray-600">Desde 800€</div>
+                    </button>
+                    <button onclick="selectOption('tipo', 'gas', 1200)" 
+                            class="option-btn p-6 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="text-3xl mb-2">🔥</div>
+                        <div class="font-semibold">Chimenea de Gas</div>
+                        <div class="text-sm text-gray-600">Desde 1.200€</div>
+                    </button>
+                    <button onclick="selectOption('tipo', 'insertable', 2000)" 
+                            class="option-btn p-6 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="text-3xl mb-2">🏠</div>
+                        <div class="font-semibold">Insert/Insertable</div>
+                        <div class="text-sm text-gray-600">Desde 2.000€</div>
+                    </button>
+                </div>
+            </div>
+
+            <div id="step2" class="calculator-step hidden">
+                <h3 class="text-xl font-semibold mb-4">2. Tamaño de la habitación</h3>
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <button onclick="selectOption('tamaño', 'pequeña', 0)" 
+                            class="option-btn p-4 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="font-semibold">Pequeña</div>
+                        <div class="text-sm text-gray-600">Hasta 30m²</div>
+                    </button>
+                    <button onclick="selectOption('tamaño', 'mediana', 300)" 
+                            class="option-btn p-4 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="font-semibold">Mediana</div>
+                        <div class="text-sm text-gray-600">30-60m²</div>
+                        <div class="text-xs text-orange-600">+300€</div>
+                    </button>
+                    <button onclick="selectOption('tamaño', 'grande', 600)" 
+                            class="option-btn p-4 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="font-semibold">Grande</div>
+                        <div class="text-sm text-gray-600">+60m²</div>
+                        <div class="text-xs text-orange-600">+600€</div>
+                    </button>
+                </div>
+            </div>
+
+            <div id="step3" class="calculator-step hidden">
+                <h3 class="text-xl font-semibold mb-4">3. ¿Necesitas instalación?</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <button onclick="selectOption('instalacion', 'basica', 500)" 
+                            class="option-btn p-4 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="font-semibold">Instalación Básica</div>
+                        <div class="text-sm text-gray-600">+500€</div>
+                    </button>
+                    <button onclick="selectOption('instalacion', 'completa', 1200)" 
+                            class="option-btn p-4 border-2 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition">
+                        <div class="font-semibold">Instalación Completa</div>
+                        <div class="text-sm text-gray-600">Con salida humos +1.200€</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resultado -->
+            <div id="resultado" class="hidden bg-gradient-to-r from-green-400 to-blue-500 text-white p-8 rounded-xl text-center">
+                <h3 class="text-2xl font-bold mb-4">💰 Tu Presupuesto Estimado</h3>
+                <div class="text-4xl font-bold mb-2" id="precio-final">0€</div>
+                <p class="text-lg mb-6" id="desglose"></p>
+                
+                <!-- Formulario para conseguir contacto -->
+                <div class="bg-white text-gray-800 p-6 rounded-lg max-w-md mx-auto">
+                    <h4 class="text-lg font-semibold mb-4">¡Consigue 3 Presupuestos GRATIS!</h4>
+                    <form id="lead-form" class="space-y-3">
+                        <input type="text" id="nombre" placeholder="Tu nombre" required 
+                               class="w-full p-3 border rounded-lg">
+                        <input type="tel" id="telefono" placeholder="Tu teléfono" required 
+                               class="w-full p-3 border rounded-lg">
+                        <input type="email" id="email" placeholder="Tu email" required 
+                               class="w-full p-3 border rounded-lg">
+                        <textarea id="comentarios" placeholder="Comentarios adicionales (opcional)" 
+                                  class="w-full p-3 border rounded-lg h-16"></textarea>
+                        
+                        <button type="submit" id="submit-btn"
+                                class="w-full bg-orange-500 text-white font-bold py-3 rounded-lg hover:bg-orange-600 transition">
+                            <span id="btn-text">🚀 CONSEGUIR PRESUPUESTOS GRATIS</span>
+                            <span class="loading" id="loading-spinner">
+                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Enviando...
+                            </span>
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-600 mt-2">
+                        ✅ 3 empresas verificadas te contactarán en 24h
+                    </p>
+                </div>
+                
+                <!-- Mensaje de éxito -->
+                <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-lg">
+                    <h5 class="font-semibold">¡Solicitud enviada correctamente! ✅</h5>
+                    <p class="text-sm mt-1">Te contactaremos en las próximas 24 horas con 3 presupuestos de empresas verificadas en Valladolid.</p>
+                </div>
+                
+                <!-- Mensaje de error -->
+                <div id="error-message" class="hidden mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
+                    <h5 class="font-semibold">Error al enviar ❌</h5>
+                    <p class="text-sm mt-1">Por favor, inténtalo de nuevo o llámanos directamente.</p>
+                </div>
+            </div>
+
+            <!-- Precio en tiempo real -->
+            <div id="precio-preview" class="text-center py-4 hidden">
+                <div class="text-2xl font-bold text-orange-600" id="precio-actual">0€</div>
+                <p class="text-sm text-gray-600">Precio estimado actual</p>
+            </div>
+        </div>
+
+        <!-- Comparativa de precios -->
+        <div class="mt-8 bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-center">💡 Precios Orientativos en Valladolid (2025)</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold mb-2">🌱 Estufas de Pellets</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>• Básica: 1.500€ - 2.500€</li>
+                        <li>• Premium: 2.500€ - 4.000€</li>
+                        <li>• Instalación: 500€ - 1.200€</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2">🪵 Chimeneas de Leña</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>• Insert básico: 800€ - 1.500€</li>
+                        <li>• Insert premium: 1.500€ - 3.000€</li>
+                        <li>• Instalación: 400€ - 1.000€</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración EmailJS - ACTUALIZAR ESTOS VALORES
+        const EMAIL_CONFIG = {
+            serviceID: 'service_1bmf37n',      // Cambiar por tu Service ID
+            templateID: 'template_v713iom',    // Cambiar por tu Template ID  
+            userID: 'TInhixAuLBkF3El9k',         // Cambiar por tu Public Key
+            toEmail: 'jbmegido123@gmail.com'     // TU EMAIL donde quieres recibir los leads
+        };
+        
+        // Inicializar EmailJS
+        (function() {
+            emailjs.init(EMAIL_CONFIG.userID);
+        })();
+
+        let calculatorData = {
+            tipo: { value: null, price: 0 },
+            tamaño: { value: null, price: 0 },
+            instalacion: { value: null, price: 0 }
+        };
+
+        function selectOption(category, value, price) {
+            calculatorData[category] = { value, price };
+            
+            // Marcar opción seleccionada
+            document.querySelectorAll(`#step${getCurrentStep()} .option-btn`).forEach(btn => {
+                btn.classList.remove('border-orange-500', 'bg-orange-50');
+            });
+            event.target.closest('.option-btn').classList.add('border-orange-500', 'bg-orange-50');
+            
+            updatePrice();
+            nextStep();
+        }
+
+        function getCurrentStep() {
+            if (!calculatorData.tipo.value) return 1;
+            if (!calculatorData.tamaño.value) return 2;
+            if (!calculatorData.instalacion.value) return 3;
+            return 4;
+        }
+
+        function nextStep() {
+            const currentStep = getCurrentStep();
+            
+            // Ocultar step actual
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep - 1}`).classList.add('hidden');
+            }
+            
+            // Mostrar siguiente step o resultado
+            if (currentStep <= 3) {
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+                document.getElementById('precio-preview').classList.remove('hidden');
+            } else {
+                showResult();
+            }
+        }
+
+        function updatePrice() {
+            const total = calculatorData.tipo.price + calculatorData.tamaño.price + calculatorData.instalacion.price;
+            document.getElementById('precio-actual').textContent = total.toLocaleString() + '€';
+        }
+
+        function showResult() {
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('precio-preview').classList.add('hidden');
+            
+            const total = calculatorData.tipo.price + calculatorData.tamaño.price + calculatorData.instalacion.price;
+            const range = `${total.toLocaleString()}€ - ${(total * 1.3).toLocaleString()}€`;
+            
+            document.getElementById('precio-final').textContent = range;
+            document.getElementById('desglose').textContent = 
+                `${calculatorData.tipo.value} + habitación ${calculatorData.tamaño.value} + ${calculatorData.instalacion.value}`;
+            
+            document.getElementById('resultado').classList.remove('hidden');
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar loading
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            
+            // Ocultar mensajes previos
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            
+            // Mostrar loading
+            btnText.classList.add('hidden');
+            loadingSpinner.classList.add('active');
+            submitBtn.disabled = true;
+            
+            // Recoger datos del formulario
+            const leadData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('email').value,
+                comentarios: document.getElementById('comentarios').value,
+                tipo_chimenea: calculatorData.tipo.value,
+                tamaño_habitacion: calculatorData.tamaño.value,
+                tipo_instalacion: calculatorData.instalacion.value,
+                presupuesto_estimado: calculatorData.tipo.price + calculatorData.tamaño.price + calculatorData.instalacion.price,
+                fecha_hora: new Date().toLocaleString('es-ES'),
+                fuente: 'Calculadora Web Valladolid'
+            };
+            
+            // Preparar parámetros para el email
+            const templateParams = {
+                to_email: EMAIL_CONFIG.toEmail,
+                subject: `🚨 NUEVO LEAD CHIMENEAS: ${leadData.nombre} - ${leadData.presupuesto_estimado}€`,
+                
+                // Datos del cliente
+                cliente_nombre: leadData.nombre,
+                cliente_telefono: leadData.telefono,
+                cliente_email: leadData.email,
+                cliente_comentarios: leadData.comentarios || 'Sin comentarios adicionales',
+                
+                // Detalles del proyecto  
+                tipo_chimenea: leadData.tipo_chimenea,
+                tamaño_habitacion: leadData.tamaño_habitacion,
+                tipo_instalacion: leadData.tipo_instalacion,
+                presupuesto_estimado: leadData.presupuesto_estimado.toLocaleString() + '€',
+                
+                // Metadatos
+                fecha_hora: leadData.fecha_hora,
+                fuente: leadData.fuente,
+                
+                // Mensaje completo formateado
+                mensaje_completo: `
+NUEVO LEAD GENERADO 🚨
+
+👤 DATOS CLIENTE:
+Nombre: ${leadData.nombre}
+Teléfono: ${leadData.telefono}
+Email: ${leadData.email}
+
+🔥 DETALLES PROYECTO:
+Tipo: ${leadData.tipo_chimenea}
+Habitación: ${leadData.tamaño_habitacion}
+Instalación: ${leadData.tipo_instalacion}
+Presupuesto estimado: ${leadData.presupuesto_estimado.toLocaleString()}€
+
+📝 COMENTARIOS:
+${leadData.comentarios || 'Sin comentarios adicionales'}
+
+🕐 FECHA/HORA: ${leadData.fecha_hora}
+🌐 FUENTE: ${leadData.fuente}
+
+¡Contacta al cliente en las próximas 2 horas para mejor conversión!
+                `.trim()
+            };
+            
+            // Enviar email
+            emailjs.send(EMAIL_CONFIG.serviceID, EMAIL_CONFIG.templateID, templateParams)
+                .then(function(response) {
+                    console.log('Email enviado correctamente:', response);
+                    
+                    // Mostrar mensaje de éxito
+                    successMsg.classList.remove('hidden');
+                    
+                    // Ocultar formulario
+                    document.getElementById('lead-form').style.display = 'none';
+                    
+                    // Analytics (opcional)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'lead_generated', {
+                            event_category: 'Lead Generation',
+                            event_label: 'Calculadora Chimeneas',
+                            value: leadData.presupuesto_estimado
+                        });
+                    }
+                    
+                }, function(error) {
+                    console.error('Error enviando email:', error);
+                    
+                    // Mostrar mensaje de error
+                    errorMsg.classList.remove('hidden');
+                })
+                .finally(function() {
+                    // Ocultar loading
+                    btnText.classList.remove('hidden');
+                    loadingSpinner.classList.remove('active');
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
+
+</body>
+</html>
