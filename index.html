@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -67,33 +68,46 @@
     }
     </script>
     
-    <!-- Local Business Schema -->
+    <!-- Service Schema (Sin dirección física requerida) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://calculadorachimeneasvalladolid.netlify.app/#business",
-        "name": "Servicios de Chimeneas Valladolid",
-        "description": "Conectamos clientes con las mejores empresas de chimeneas y estufas de pellets en Valladolid",
+        "@type": "Service",
+        "@id": "https://calculadorachimeneasvalladolid.netlify.app/#service",
+        "name": "Conexión con Profesionales de Chimeneas en Valladolid",
+        "description": "Servicio gratuito que conecta clientes con las mejores empresas de chimeneas y estufas de pellets en Valladolid",
         "url": "https://calculadorachimeneasvalladolid.netlify.app/",
+        "serviceType": "Intermediación y conexión con profesionales",
+        "category": "Servicios de construcción y hogar",
         "areaServed": {
             "@type": "City",
             "name": "Valladolid",
             "addressRegion": "Castilla y León",
             "addressCountry": "ES"
         },
-        "serviceType": [
-            "Instalación de chimeneas",
-            "Instalación de estufas de pellets", 
-            "Reparación de chimeneas",
-            "Mantenimiento de estufas",
-            "Presupuestos gratuitos"
-        ],
-        "priceRange": "€€",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "47"
+        "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://calculadorachimeneasvalladolid.netlify.app/",
+            "serviceSmsNumber": null,
+            "servicePhone": null
+        },
+        "offers": {
+            "@type": "Offer",
+            "description": "Servicio gratuito de conexión con profesionales",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "ChimeneasValladolid.com",
+            "url": "https://calculadorachimeneasvalladolid.netlify.app/"
+        },
+        "serviceAudience": {
+            "@type": "Audience",
+            "geographicArea": {
+                "@type": "City", 
+                "name": "Valladolid"
+            }
         }
     }
     </script>
